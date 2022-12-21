@@ -8,12 +8,12 @@ public class CharacterGrounding : MonoBehaviour
     [SerializeField] private Transform _rightFoot;
     [SerializeField] private float _maxDistance = 0.1f;
     [SerializeField] private LayerMask _layerMask;
-    [SerializeField] private bool _isGrounded;
+    public bool IsGrounded { get; private set; }
 
     void Update()
     {
         CheckFootForGrounding(_leftFoot);
-        if (_isGrounded == false)
+        if (IsGrounded == false)
         {
             CheckFootForGrounding(_rightFoot); ;
         }
@@ -26,11 +26,11 @@ public class CharacterGrounding : MonoBehaviour
         Debug.DrawRay(foot.position, Vector3.down * _maxDistance, Color.red);
         if (raycastHit.collider != null)
         {
-            _isGrounded = true;
+            IsGrounded = true;
         }
         else
         {
-            _isGrounded = false;
+            IsGrounded = false;
         }
     }
 }

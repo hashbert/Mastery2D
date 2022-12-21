@@ -2,15 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterGrounding))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovementController : MonoBehaviour
 {
     [SerializeField] private float _moveSpeed = 10f;
     [SerializeField] private float _jumpForce = 400f;
     private Rigidbody2D _rigidbody2D;
+    private CharacterGrounding _characterGrounding;
 
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _characterGrounding = GetComponent<CharacterGrounding>();
     }
     void FixedUpdate()
     {
@@ -20,7 +24,7 @@ public class PlayerMovementController : MonoBehaviour
 
         transform.position += movement * Time.deltaTime * _moveSpeed;
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && _characterGrounding.IsGrounded)
         {
             _rigidbody2D.AddForce(Vector2.up * _jumpForce);
         }
