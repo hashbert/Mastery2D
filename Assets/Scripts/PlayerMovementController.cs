@@ -4,10 +4,10 @@ using UnityEngine;
 
 [RequireComponent(typeof(CharacterGrounding))]
 [RequireComponent(typeof(Rigidbody2D))]
-public class PlayerMovementController : MonoBehaviour
+public class PlayerMovementController : MonoBehaviour, IMove
 {
     [SerializeField] private float _moveSpeed = 10f;
-    [SerializeField] private float _jumpForce = 400f;
+    [SerializeField] private float _jumpForce = 200f;
     private Rigidbody2D _rigidbody2D;
     private CharacterGrounding _characterGrounding;
 
