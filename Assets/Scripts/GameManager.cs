@@ -7,8 +7,12 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+
     public event Action<int> OnLivesChanged;
+    public event Action<int> OnCoinsChanged;
     public int Lives { get; private set; }
+
+    private int _coins;
     private void Awake()
     {
         if (Instance != null)
@@ -34,10 +38,17 @@ public class GameManager : MonoBehaviour
             RestartGame();
         }
     }
+    public void AddCoin()
+    {
+        _coins++;
+        OnCoinsChanged?.Invoke(_coins);
+    }
 
     private void RestartGame()
     {
         Lives = 3;
+        _coins = 0;
+        OnCoinsChanged?.Invoke(_coins);
         SceneManager.LoadScene(0);
     }
 }

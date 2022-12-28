@@ -17,6 +17,10 @@ public class UILivesText : MonoBehaviour
         GameManager.Instance.OnLivesChanged += HandleOnLivesChanged;
         _tmproText.text = GameManager.Instance.Lives.ToString();
     }
+    private void OnDisable()
+    {
+        GameManager.Instance.OnLivesChanged -= HandleOnLivesChanged;
+    }
 
     private void HandleOnLivesChanged(int livesRemaining)
     {
