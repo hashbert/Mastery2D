@@ -37,7 +37,20 @@ public class GameManager : MonoBehaviour
         {
             RestartGame();
         }
+        else
+        {
+            SendPlayerToCheckpoint();
+        }
     }
+
+    private void SendPlayerToCheckpoint()
+    {
+        var checkPointManager = FindObjectOfType<CheckpointManager>();
+        var checkpoint = checkPointManager.GetLastCheckpointThatWasPassed();
+        var player = FindObjectOfType<PlayerMovementController>();
+        player.transform.position = checkpoint.transform.position;
+    }
+
     public void AddCoin()
     {
         _coins++;

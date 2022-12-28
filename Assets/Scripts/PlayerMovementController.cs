@@ -18,7 +18,7 @@ public class PlayerMovementController : MonoBehaviour, IMove
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _characterGrounding = GetComponent<CharacterGrounding>();
     }
-    void FixedUpdate()
+    void Update()
     {
         float horizontal = Input.GetAxis("Horizontal");
         Speed = horizontal;
