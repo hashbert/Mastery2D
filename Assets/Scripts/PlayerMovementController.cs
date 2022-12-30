@@ -18,7 +18,15 @@ public class PlayerMovementController : MonoBehaviour, IMove
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _characterGrounding = GetComponent<CharacterGrounding>();
     }
-    void Update()
+
+    private void Update()
+    {
+        if (Input.GetButtonDown("Fire1") && _characterGrounding.IsGrounded)
+        {
+            _rigidbody2D.AddForce(Vector2.up * _jumpForce);
+        }
+    }
+    void FixedUpdate()
     {
         float horizontal = Input.GetAxis("Horizontal");
         Speed = horizontal;
@@ -26,10 +34,5 @@ public class PlayerMovementController : MonoBehaviour, IMove
         Vector3 movement = new Vector3(horizontal, 0);
 
         transform.position += movement * Time.deltaTime * _moveSpeed;
-
-        if (Input.GetButtonDown("Fire1") && _characterGrounding.IsGrounded)
-        {
-            _rigidbody2D.AddForce(Vector2.up * _jumpForce);
-        }
     }
 }
