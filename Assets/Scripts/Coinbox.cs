@@ -14,8 +14,9 @@ public class Coinbox : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        var player = collision.collider.GetComponent<PlayerMovementController>();
-        if (_remainingCoins > 0 && player != null)
+        if (_remainingCoins > 0 && 
+            WasHitByPlayer(collision) &&
+            WasHitFromBottomSide(collision))
         {
             GameManager.Instance.AddCoin();
             _remainingCoins--;
@@ -26,5 +27,15 @@ public class Coinbox : MonoBehaviour
                 _disabledSprite.enabled = true;
             }
         }
+    }
+
+    private static bool WasHitByPlayer(Collision2D collision)
+    {
+        return collision.collider.GetComponent<PlayerMovementController>() != null;
+    }
+
+    private static bool WasHitFromBottomSide(Collision2D collision)
+    {
+        return collision.contacts[0].normal.y > 0.5;
     }
 }
