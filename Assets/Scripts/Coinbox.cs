@@ -7,9 +7,11 @@ public class Coinbox : MonoBehaviour
     [SerializeField] private SpriteRenderer _enabledSprite;
     [SerializeField] private SpriteRenderer _disabledSprite;
     [SerializeField] private int _totalCoins = 1;
+    private Animator _animator;
     private int _remainingCoins;
     private void Awake()
     {
+        _animator = GetComponent<Animator>();
         _remainingCoins = _totalCoins;
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -20,6 +22,7 @@ public class Coinbox : MonoBehaviour
         {
             GameManager.Instance.AddCoin();
             _remainingCoins--;
+            _animator.SetTrigger("FlipCoin");
 
             if (_remainingCoins <= 0)
             {
