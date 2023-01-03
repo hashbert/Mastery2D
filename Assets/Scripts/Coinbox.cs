@@ -16,7 +16,7 @@ public class Coinbox : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (_remainingCoins > 0 && 
+        if (_remainingCoins > 0 &&
             WasHitByPlayer(collision) &&
             WasHitFromBottomSide(collision))
         {
