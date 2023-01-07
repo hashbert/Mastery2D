@@ -14,6 +14,10 @@ public class UICoinImage : MonoBehaviour
         GameManager.Instance.OnCoinsChanged += PulseCoinImage;
     }
 
+    private void OnDestroy()
+    {
+        GameManager.Instance.OnCoinsChanged -= PulseCoinImage;
+    }
     private void PulseCoinImage(int coin)
     {
         _animator.SetTrigger("Pulse");
