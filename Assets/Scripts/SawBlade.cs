@@ -7,6 +7,7 @@ public class SawBlade : MonoBehaviour
     [SerializeField] private Transform _start;
     [SerializeField] private Transform _end;
     [SerializeField] private Transform _sawBladeSprite;
+    [SerializeField] private float _speed = 0.5f;
     private float _positionPercent;
     private int _direction = 1;
 
@@ -19,8 +20,8 @@ public class SawBlade : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _positionPercent += Time.deltaTime * _direction;
-        _sawBladeSprite.position = Vector3.Lerp(_start.position, _end.position, _positionPercent);
+        _positionPercent += Time.deltaTime * _speed *  _direction;
+        _sawBladeSprite.position = Vector3.Lerp(_start.position, _end.position, _positionPercent );
 
         if (_positionPercent >=1 && _direction == 1)
         {
