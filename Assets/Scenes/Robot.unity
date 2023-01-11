@@ -264,7 +264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6487614685770980197, guid: e32d03cbc40a4d44b9939c04058e453f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.00004
+      value: 20.50041
       objectReference: {fileID: 0}
     - target: {fileID: 6487614685770980197, guid: e32d03cbc40a4d44b9939c04058e453f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1696,6 +1696,7 @@ GameObject:
   m_Component:
   - component: {fileID: 798929865}
   - component: {fileID: 798929866}
+  - component: {fileID: 798929867}
   m_Layer: 0
   m_Name: snowMid
   m_TagString: Untagged
@@ -1772,6 +1773,32 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &798929867
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798929864}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 0.7, y: 0.7}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3, y: 1}
+  m_EdgeRadius: 0
 --- !u!1 &804528186
 GameObject:
   m_ObjectHideFlags: 0
@@ -3541,7 +3568,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1909004308}
-  - component: {fileID: 1909004309}
   m_Layer: 0
   m_Name: Snow Platform
   m_TagString: Untagged
@@ -3567,32 +3593,6 @@ Transform:
   m_Father: {fileID: 123875798}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1909004309
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1909004307}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 3, y: 1}
-  m_EdgeRadius: 0
 --- !u!1 &1912331178
 GameObject:
   m_ObjectHideFlags: 0
