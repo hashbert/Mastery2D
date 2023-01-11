@@ -8,6 +8,7 @@ public class Walker : MonoBehaviour
     [SerializeField] private float _speed = 1f;
     private Collider2D _collider;
     private Rigidbody2D _rigidbody2D;
+    private SpriteRenderer _spriteRenderer;
     private Vector2 _direction = Vector2.left;
     private Transform _leftPosition;
 
@@ -15,6 +16,7 @@ public class Walker : MonoBehaviour
     {
         _collider = GetComponent<Collider2D>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void FixedUpdate()
@@ -50,5 +52,6 @@ public class Walker : MonoBehaviour
     private void SwitchDirections()
     {
         _direction *= -1;
+        _spriteRenderer.flipX = !_spriteRenderer.flipX;
     }
 }
