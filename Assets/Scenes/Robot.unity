@@ -264,11 +264,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6487614685770980197, guid: e32d03cbc40a4d44b9939c04058e453f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.50041
+      value: 20.29
       objectReference: {fileID: 0}
     - target: {fileID: 6487614685770980197, guid: e32d03cbc40a4d44b9939c04058e453f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.50003
+      value: -1.3
       objectReference: {fileID: 0}
     - target: {fileID: 6487614685770980197, guid: e32d03cbc40a4d44b9939c04058e453f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1263,7 +1263,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -5.000099, y: -0.50001, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2400,6 +2400,7 @@ GameObject:
   - component: {fileID: 1227255047}
   - component: {fileID: 1227255051}
   - component: {fileID: 1227255050}
+  - component: {fileID: 1227255053}
   - component: {fileID: 1227255052}
   m_Layer: 0
   m_Name: snailWalk1
@@ -2555,6 +2556,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 1
+--- !u!114 &1227255053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227255046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3eb4f56e8352294baf8dd7dc50bc506, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1272375239
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3055,7 +3068,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1556532319}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -5.000099, y: -0.50001, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3537,7 +3550,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1864009835}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -5.000099, y: -0.50001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

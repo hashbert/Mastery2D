@@ -25,23 +25,45 @@ public class Walker : MonoBehaviour
     }
     private void LateUpdate()
     {
-        if (ReachedEdge())
+        if (ReachedEdge() || HitNotPlayer())
         {
             SwitchDirections();
         }
     }
+
+    private bool HitNotPlayer()
+    {
+        float x = GetForwardX();
+        float y = transform.position.y;
+        Vector2 origin = new Vector2(x, y);
+        Debug.DrawRay(origin, _direction * 0.1f);
+        var hit = Physics2D.Raycast(origin, _direction, 0.1f);
+        if (hit.collider == null)
+        {
+            return false;
+        }
+        if (hit.collider.isTrigger)
+        {
+            return false;
+        }
+        if (hit.collider.GetComponent<PlayerMovementController>() != null)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
     private bool ReachedEdge()
     {
-        float x = _direction.x == -1 ?
-            _collider.bounds.min.x - 0.1f :
-            _collider.bounds.max.x + 0.1f;
+        float x = GetForwardX();
 
         float y = _collider.bounds.min.y;
 
         Vector2 origin = new Vector2(x, y);
         Debug.DrawRay(origin, Vector2.down * 0.1f);
 
-        var hit = Physics2D.Raycast(origin, Vector2.down, 0.1f); 
+        var hit = Physics2D.Raycast(origin, Vector2.down, 0.1f);
         if (hit.collider == null)
         {
             return true;
@@ -49,6 +71,14 @@ public class Walker : MonoBehaviour
 
         return false;
     }
+
+    private float GetForwardX()
+    {
+        return _direction.x == -1 ?
+                    _collider.bounds.min.x - 0.1f :
+                    _collider.bounds.max.x + 0.1f;
+    }
+
     private void SwitchDirections()
     {
         _direction *= -1;
