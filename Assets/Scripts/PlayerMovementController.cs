@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,5 +35,9 @@ public class PlayerMovementController : MonoBehaviour, IMove
         Vector3 movement = new Vector3(horizontal, 0);
 
         transform.position += movement * Time.deltaTime * _moveSpeed;
+    }
+    internal void Bounce()
+    {
+        _rigidbody2D.AddForce(Vector2.up * _jumpForce);
     }
 }

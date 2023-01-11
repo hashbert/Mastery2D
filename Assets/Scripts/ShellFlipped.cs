@@ -25,15 +25,18 @@ public class ShellFlipped : MonoBehaviour
     {
         if (collision.WasHitByPlayer())
         {
+            var playerMovementController = collision.collider.GetComponent<PlayerMovementController>();
             if (_direction.magnitude == 0)
             {
                 LaunchShell(collision);
+                playerMovementController.Bounce();
             }
             else
             {
                 if (collision.WasTop())
                 {
                     _direction = Vector2.zero;
+                    playerMovementController.Bounce();
                 }
                 else
                 {
