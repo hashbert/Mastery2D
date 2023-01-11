@@ -25,6 +25,10 @@ public class Walker : MonoBehaviour
         {
             HandleWalkerStomped();
         }
+        else
+        {
+            GameManager.Instance.KillPlayer();
+        }
     }
 
     private void HandleWalkerStomped()
