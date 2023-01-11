@@ -1704,7 +1704,7 @@ MonoBehaviour:
   _start: {fileID: 804528187}
   _end: {fileID: 737190117}
   _sawBladeSprite: {fileID: 210344503}
-  _speed: 0.5
+  _speed: 5
 --- !u!4 &1032279701
 Transform:
   m_ObjectHideFlags: 0
