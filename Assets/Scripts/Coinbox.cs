@@ -18,7 +18,7 @@ public class Coinbox : MonoBehaviour
     {
         if (_remainingCoins > 0 &&
             collision.WasHitByPlayer() &&
-            collision.WasHitFromBottomSide())
+            collision.WasBottom())
         {
             GameManager.Instance.AddCoin();
             _remainingCoins--;

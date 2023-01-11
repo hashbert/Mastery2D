@@ -11,12 +11,29 @@ public class Walker : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private Vector2 _direction = Vector2.left;
     private Transform _leftPosition;
+    [SerializeField] private GameObject _spawnOnStompPrefab;
 
     private void Awake()
     {
         _collider = GetComponent<Collider2D>();
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.WasHitByPlayer() && collision.WasTop())
+        {
+            HandleWalkerStomped();
+        }
+    }
+
+    private void HandleWalkerStomped()
+    {
+        if (_spawnOnStompPrefab != null)
+        {
+            Instantiate(_spawnOnStompPrefab, transform.position, transform.rotation);
+        }
+        Destroy(gameObject);
     }
 
     private void FixedUpdate()
