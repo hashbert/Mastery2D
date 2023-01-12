@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
     }
     private void RestartGame()
     {
+        _currentLevelIndex = 0;
         Lives = 3;
         _coins = 0;
         OnCoinsChanged?.Invoke(_coins);
