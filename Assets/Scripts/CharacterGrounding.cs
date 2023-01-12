@@ -8,16 +8,17 @@ public class CharacterGrounding : MonoBehaviour
     [SerializeField] private Transform[] _positions;
     [SerializeField] private float _maxDistance = 0.1f;
     [SerializeField] private LayerMask _layerMask;
-    public bool IsGrounded { get; private set; }
     private Transform _groundedObject;
-    public Vector3? _groundedObjectLastPosition;
+    private Vector3? _groundedObjectLastPosition;
+    public bool IsGrounded { get; private set; }
+    public Vector2 GroundedDirection { get; private set; }
 
     void Update()
     {
         foreach (var position in _positions)
         {
             CheckFootForGrounding(position);
-            if (IsGrounded) 
+            if (IsGrounded)
                 break;
         }
         StickToMovingObjects();
@@ -43,21 +44,23 @@ public class CharacterGrounding : MonoBehaviour
 
     private void CheckFootForGrounding(Transform foot)
     {
-        var raycastHit = Physics2D.Raycast(foot.position, Vector2.down, _maxDistance, _layerMask);
-        Debug.DrawRay(foot.position, Vector3.down * _maxDistance, Color.red);
+        var raycastHit = Physics2D.Raycast(foot.position, foot.forward, _maxDistance, _layerMask);
+        Debug.DrawRay(foot.position, foot.forward * _maxDistance, Color.red);
+
         if (raycastHit.collider != null)
         {
             if (_groundedObject != raycastHit.collider.transform)
             {
-                _groundedObject = raycastHit.collider.transform;
-                IsGrounded = true;
-                _groundedObjectLastPosition = _groundedObject.position;
+                _groundedObjectLastPosition = raycastHit.collider.transform.position;
             }
-            else
-            {
-                _groundedObject = null;
-                IsGrounded = false;
-            }
+            _groundedObject = raycastHit.collider.transform;
+            IsGrounded = true;
+            GroundedDirection = foot.forward;
+        }
+        else
+        {
+            _groundedObject = null;
+            IsGrounded = false;
         }
     }
 }

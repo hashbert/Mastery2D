@@ -9,6 +9,7 @@ public class PlayerMovementController : MonoBehaviour, IMove
 {
     [SerializeField] private float _moveSpeed = 10f;
     [SerializeField] private float _jumpForce = 200f;
+    [SerializeField] private float _wallJumpForce = 200f;
     private Rigidbody2D _rigidbody2D;
     private CharacterGrounding _characterGrounding;
 
@@ -25,6 +26,10 @@ public class PlayerMovementController : MonoBehaviour, IMove
         if (Input.GetButtonDown("Fire1") && _characterGrounding.IsGrounded)
         {
             _rigidbody2D.AddForce(Vector2.up * _jumpForce);
+            if (_characterGrounding.GroundedDirection != Vector2.down)
+            {
+                _rigidbody2D.AddForce(_characterGrounding.GroundedDirection * -1f * _wallJumpForce);
+            }
         }
     }
     void FixedUpdate()
