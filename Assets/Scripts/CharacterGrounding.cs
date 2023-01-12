@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class CharacterGrounding : MonoBehaviour
 {
-    [SerializeField] private Transform _leftFoot;
-    [SerializeField] private Transform _rightFoot;
+    [SerializeField] private Transform[] _positions;
     [SerializeField] private float _maxDistance = 0.1f;
     [SerializeField] private LayerMask _layerMask;
     public bool IsGrounded { get; private set; }
@@ -15,12 +14,12 @@ public class CharacterGrounding : MonoBehaviour
 
     void Update()
     {
-        CheckFootForGrounding(_leftFoot);
-        if (IsGrounded == false)
+        foreach (var position in _positions)
         {
-            CheckFootForGrounding(_rightFoot); ;
+            CheckFootForGrounding(position);
+            if (IsGrounded) 
+                break;
         }
-
         StickToMovingObjects();
     }
 
@@ -48,13 +47,17 @@ public class CharacterGrounding : MonoBehaviour
         Debug.DrawRay(foot.position, Vector3.down * _maxDistance, Color.red);
         if (raycastHit.collider != null)
         {
-            _groundedObject = raycastHit.collider.transform;
-            IsGrounded = true;
-        }
-        else
-        {
-            _groundedObject = null;
-            IsGrounded = false;
+            if (_groundedObject != raycastHit.collider.transform)
+            {
+                _groundedObject = raycastHit.collider.transform;
+                IsGrounded = true;
+                _groundedObjectLastPosition = _groundedObject.position;
+            }
+            else
+            {
+                _groundedObject = null;
+                IsGrounded = false;
+            }
         }
     }
 }
