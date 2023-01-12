@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public int Lives { get; private set; }
 
     private int _coins;
+    private int _currentLevelIndex;
     private void Awake()
     {
         if (Instance != null)
@@ -57,6 +58,11 @@ public class GameManager : MonoBehaviour
         OnCoinsChanged?.Invoke(_coins);
     }
 
+    public void MoveToNextLevel()
+    {
+        _currentLevelIndex++;
+        SceneManager.LoadScene(_currentLevelIndex);
+    }
     private void RestartGame()
     {
         Lives = 3;
